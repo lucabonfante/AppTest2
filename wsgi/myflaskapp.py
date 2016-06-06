@@ -19,7 +19,7 @@ app.config['PROPAGATE_EXCEPTIONS'] = True
 
 #CORS(app)
 positions = {}
-conn = pymongo.MongoClient(os.environ['$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT'])
+conn = pymongo.MongoClient(os.environ['OPENSHIFT_NOSQL_DB_URL'])
 #os.environ['$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT']
 db = conn.database
 positions2=db['positions']
