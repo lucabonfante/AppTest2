@@ -4,7 +4,9 @@
         <link href="/static/css/bootstrap.min.css" rel="stylesheet">
         <link href="/static/css/styleSheet.css" rel="stylesheet">
 
-        <title>Single Page Application</title>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkPsk91hp6mlP4ORDFS1Kfi6_orHhgSKM&callback=initMap"></script>
+
+        <title>Geolocation Web App</title>
     </head>
 
 
@@ -13,48 +15,17 @@
     <body>
         <div id="pag1"><br>
 
-            <h1>Inserisci nuovo alunno</h1><br>
-
-            <input  id="campoTextNumReg" type="text" name="numeroRegistro" placeholder="Numero registro"/><br><br>
-            <input  id="campoTextNome" type="text" name="nome" placeholder="Nome"/><br><br>
-            <input  id="campoTextCognome" type="text" name="cognome" placeholder="Cognome"/><br><br>
-            <input  id="campoTextAnnoNascita" type="text" name="annoNascita" placeholder="Anno di nascita"/><br><br>
-            <button id="leggiCampoTextRegistrazione" > Registrati </button><br><br>
-            <div id="campoText2-div">
-
-            </div>
-
-            <h1>Trova numero di registro</h1><br>
-
-            <input  id="campoText1" type="text" name="numeroReg" placeholder="Numero registro"/><br><br>
-            <button id="leggiCampoText1" > Invia </button><br><br>
-
-            <div>
-                <button id="leggiDizionario">Leggi dizionario</button>
-            </div>
-            <div id="h3_2">
-
-            </div>
-            <div id="campoText1-div">
-
-            </div>
-            <div id ="campoText3-div">
-
-            </div>
             <div><br><br><br>
                 <h1>Gps</h1><br>
 
                 <input id="longitude" type="text" placeholder="Longitude"><br><br>
                 <input id="latitude" type="text" placeholder="Latitude"><br><br>
-                <input id="date" type="text" placeholder="Date"><br><br>
                 <button id="inviaCoordinate">Invia</button><br><br>
             </div>
-            <div>
-                <button id="buttonReadPositions">Leggi le posizioni salvate</button><br><br>
-                <button id="buttonCleanPositions">Reset positions</button><br><br>
-            </div>
+            <div id="googleMap" style="width:500px;height:380px;"></div><br><br>
+            <h1>Coordinate:</h1><br><br>
             <div id="campoTextPositions">
-     </div><br><br>
+            </div><br><br>
         </div>
 
         <!-- Sezione Template ----------------------------------------------------->
