@@ -64,9 +64,9 @@ def readPositions():
         html += '  <div>\
                             <table style="width:90%">\
                                 <tr>\
-                                    <td><b>Latitudine:</b></td>\
-                                    <td><b>Longitudine:</b></td>\
-                                    <td><b>Data:</b></td>\
+                                    <td><em><b>Latitudine:</b></em></td>\
+                                    <td><em><b>Longitudine:</b></em></td>\
+                                    <td><i><b>Data:</b></i></td>\
                                     <td><a href="#" class="x" onclick="APP.eliminaPosition();">x</a></td>\
                                 </tr>\
                                 <tr>\
