@@ -55,12 +55,13 @@ def insertPosition():
 
 @app.route("/readPositions/", methods = ["POST"])
 def readPositions():
-    risultato="<p>"
-    for coordinate in positions:
-        latitudine = positions[coordinate]["latitude"]
-        longitudine = positions[coordinate]["longitude"]
-        data = positions[coordinate]["date"]
-        risultato += '  <div class=""> \
+    cursor = positions.find()
+    html="<p>"
+    for coordinate in cursor:
+        latitudine = coordinate["latitude"]
+        longitudine = coordinate["longitude"]
+        data = coordinate["date"]
+        html += '  <div class=""> \
                             <table style="width:90%"> \
                                 <tr> \
                                     <td><b>Latitudine:&nbsp;&nbsp;&nbsp;</b></td> \
@@ -75,8 +76,8 @@ def readPositions():
                                 </tr> \
                             </table> \
                         </div> '
-    risultato += "</p>"
-    return risultato
+    html += "</p>"
+    return html
 
 @app.route("/cleanPositions/", methods = ["POST"])
 def cleanPositions():
