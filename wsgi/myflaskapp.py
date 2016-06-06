@@ -18,11 +18,9 @@ app = Flask(__name__)
 app.config['PROPAGATE_EXCEPTIONS'] = True
 
 #CORS(app)
-positions = {}
 conn = pymongo.MongoClient(os.environ['OPENSHIFT_MONGODB_DB_URL'])
-#os.environ['$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT']
 db = conn[os.environ['OPENSHIFT_APP_NAME']]
-positions2=db['positions']
+positions=db['positions']
 
 
 @app.route("/")
@@ -45,14 +43,15 @@ def insertPosition():
     date = request.json['date']
     
     coordinate = {"latitude" : latitude, "longitude" : longitude, "date":date}
-    #positions[date]=coordinate
     
-    positions2.insert(coordinate)
-    dict3 = {}
-    cursor = positions2.find()
+    positions.insert(coordinate)
+    dictTest = {}
+    cursor = positions.find()
     for document in cursor:
-        dict3['latitude']=document['latitude']
-    return jsonify(dict3)
+        dictTest['latitude']=document['latitude']
+        dictTest['longitude']=document['longitude']
+        dictTest['date']=document['date']
+    return jsonify(dictTest)
 
 @app.route("/readPositions/", methods = ["POST"])
 def readPositions():
