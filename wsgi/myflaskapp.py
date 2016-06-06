@@ -6,10 +6,17 @@ from flask import jsonify
 from json import dumps
 import pymongo
 import os
+from bson import objectid
+from bson import json_util
+from flask import request
+
+
 #from flask.ext.cors import CORS
 
 
 app = Flask(__name__)
+app.config['PROPAGATE_EXCEPTIONS'] = True
+
 #CORS(app)
 positions = {}
 conn = pymongo.Connection(os.environ['OPENSHIFT_NOSQL_DB_URL'])
