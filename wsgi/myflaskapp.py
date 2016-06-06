@@ -61,13 +61,14 @@ def readPositions():
         latitude = coordinate["latitude"]
         longitude = coordinate["longitude"]
         date = coordinate["date"]
+        dateStr = str(date)
         html += '  <div>\
                             <table style="width:90%">\
                                 <tr>\
                                     <td><em><b>Latitudine:</b></em></td>\
                                     <td><em><b>Longitudine:</b></em></td>\
                                     <td><i><b>Data:</b></i></td>\
-                                    <td><a href="#" class="x" onclick="APP.eliminaPosition();">x</a></td>\
+                                    <td><a href="" onclick="APP.eliminaPosition(\'' + dateStr + '\');">elimina</a></td>\
                                 </tr>\
                                 <tr>\
                                     <td>' + latitude + '</td>\
@@ -81,8 +82,10 @@ def readPositions():
 
 @app.route("/cleanPositions/", methods = ["POST"])
 def cleanPositions():
-#    date = request.json[pos]
-#    positions[date] = {}
+    date = request.json["date"]
+    cursor = positions.find({"date":date})
+    for document in cursor:
+        positions.remove(document)
     return ""
     
 if __name__ == "__main__":

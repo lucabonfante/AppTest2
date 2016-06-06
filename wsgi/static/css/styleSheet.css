@@ -49,3 +49,7 @@ p {
     border-radius: 8px;
     background-color: #b4dbf0;
 }
+
+#googleMap {
+    align-content: center
+}

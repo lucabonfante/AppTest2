@@ -50,7 +50,7 @@ var APP = {
                     }
                 });
     },
-    eliminaPosition: function (codice) {
+    eliminaPosition: function (dateStr) {
         $.ajax(
                 {
                     method: "POST",
@@ -58,9 +58,10 @@ var APP = {
                     contentType: "application/json",
                     crossDomain: true,
                     type: "json",
-                    data: JSON.stringify({"pos": codice}),
+                    data: JSON.stringify({"date": dateStr}),
                     dataType: "text",
                     success: function (data) {
+                        APP.leggiPosizioni();
                     },
                     error: function () {
                     }
