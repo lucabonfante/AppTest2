@@ -19,9 +19,10 @@ app.config['PROPAGATE_EXCEPTIONS'] = True
 
 #CORS(app)
 positions = {}
-conn = pymongo.Connection(os.environ['$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT'])
+conn = pymongo.MongoClient()
+#os.environ['$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT']
 db = conn.database
-positions=db['positions']
+positions2=db['positions']
 
 
 @app.route("/")
@@ -44,14 +45,14 @@ def insertPosition():
     date = request.json['date']
     
     coordinate = {"latitude" : latitude, "longitude" : longitude, "date":date}
-    positions[date]=coordinate
+    #positions[date]=coordinate
     
-    positions.insert(coordinate)
-    lista = []
-    cursor = positions.find()
+    positions2.insert(coordinate)
+    dict3 = {}
+    cursor = positions2.find()
     for document in cursor:
-        lista.append(document)
-    return jsonify(document)
+        dict3['latitude']=document['latitude']
+    return jsonify(dict3)
 
 @app.route("/readPositions/", methods = ["POST"])
 def readPositions():
