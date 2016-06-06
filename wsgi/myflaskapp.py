@@ -58,23 +58,23 @@ def readPositions():
     cursor = positions.find()
     html="<p>"
     for coordinate in cursor:
-        latitudine = coordinate["latitude"]
-        longitudine = coordinate["longitude"]
-        data = coordinate["date"]
-        html += '  <div class=""> \
-                            <table style="width:90%"> \
-                                <tr> \
-                                    <td><b>Latitudine:&nbsp;&nbsp;&nbsp;</b></td> \
-                                    <td><b>Longitudine:&nbsp;&nbsp;&nbsp;</b></td> \
-                                    <td><b>Data:</b></td> \
-                                    <td><a href="#" class="x" onclick="APP.eliminaPosition();">x</a></td> \
-                                </tr> \
-                                <tr> \
-                                    <td>' + latitudine + '</td> \
-                                    <td>' + longitudine + '</td> \
-                                    <td>' + data + '</td> \
-                                </tr> \
-                            </table> \
+        latitude = coordinate["latitude"]
+        longitude = coordinate["longitude"]
+        date = coordinate["date"]
+        html += '  <div>\
+                            <table style="width:90%">\
+                                <tr>\
+                                    <td><b>Latitudine:</b></td>\
+                                    <td><b>Longitudine:</b></td>\
+                                    <td><b>Data:</b></td>\
+                                    <td><a href="#" class="x" onclick="APP.eliminaPosition();">x</a></td>\
+                                </tr>\
+                                <tr>\
+                                    <td>' + latitude + '</td>\
+                                    <td>' + longitude + '</td>\
+                                    <td>' + date + '</td>\
+                                </tr>\
+                            </table>\
                         </div> '
     html += "</p>"
     return html
